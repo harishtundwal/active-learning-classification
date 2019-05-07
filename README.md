@@ -37,22 +37,23 @@ Natural Classes: 5 (business, entertainment, politics, sports, tech)
     4 : tech
     -1: None (ambiguous case, where a keywords is found in multiple documents belonging different new categories)
     
-    Example:
-    Doc1: {“baseball”, “winner”, “rate”, “progress”, “award”} ɛ SPORTS NEWS
-    Doc2: {“rate”, “progress”, “economy”, “stock”, “market”} ɛ BUSINESS NEWS
+        Example:
+        Doc1: {“baseball”, “winner”, “rate”, “progress”, “award”} ɛ SPORTS NEWS
+        Doc2: {“rate”, “progress”, “economy”, “stock”, “market”} ɛ BUSINESS NEWS
     
-    Dictionary: { ( “baseball” , 3 ) , ( “winner” , 3 ) , ( “rate” , -1 ) , ( “progress” , -1 ) , ( “award” , 3 ) , ( “economy” , 0 ) , ( “ stock” , 0 ) , ( “market” , 0 ) }
-    Where 3 means that the keyword belongs to the SPORTS NEWS ARTICLE, and 0 means that the keyword belongs to the BUSINESS NEWS ARTICLE, and -1 means that the keyword is found in both kind of ARTICLES and hence we should not use it for classifying any article having based on this keyword.
+        Dictionary: { ( “baseball” , 3 ) , ( “winner” , 3 ) , ( “rate” , -1 ) , ( “progress” , -1 ) , ( “award” , 3 ) , ( “economy” , 0 ) , ( “ stock” , 0 ) , ( “market” , 0 ) }
+        Where 3 means that the keyword belongs to the SPORTS NEWS ARTICLE, and 0 means that the keyword belongs to the BUSINESS NEWS ARTICLE, and -1 means that the keyword is found in both kind of ARTICLES and hence we should not use it for classifying any article having based on this keyword.
     
 3. Learning
     The algorithm populates the global dictionary and classifies the documents based on the score received for the document corresponding to each class.
     We use maximum matching criteria to decide the classification of unlabelled documents in the training set.
     We find the probability of document belonging to each category of news article.
     
-    prob( doc, category_i ) = score(doc, category_i ) /  for x in all categories ∑ score(doc, x)
+        prob( doc, category_i ) = score(doc, category_i ) /  for x in all categories ∑ score(doc, x)
     
     Check the category for which document is similar with maximum probability. 
-    d(doc, prob) =     ASSIGN CATEGORY if prob >= 0.65 esle ASK ORACLE FOR LABEL
+
+        d(doc, prob) =     ASSIGN CATEGORY if prob >= 0.65 esle ASK ORACLE FOR LABEL
 
 ## Conclusion
     We observe that the accuracy of classification is quite appreciable when we use Active Learning to when compared to other techniques.
